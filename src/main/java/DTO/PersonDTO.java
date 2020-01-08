@@ -5,52 +5,102 @@
  */
 package DTO;
 
+import entities.Hobby;
+import entities.Person;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author jacobfolkehildebrandt
  */
 public class PersonDTO {
-    private String name;
-    private String height;
-    private String gender;
+    private Long id;
+    private String fName;
+    private String lName;
+    private String email;
+    private AddressDTO address;
+    private String phone;
+    private List<HobbyDTO> hobbies = new ArrayList<>();
 
     public PersonDTO() {
     }
 
-    public PersonDTO(String name, String height, String gender) {
-        this.name = name;
-        this.height = height;
-        this.gender = gender;
+    public PersonDTO(Person person) {
+        if (person.getId() != null) {
+            this.id = person.getId();
+        }
+        this.fName = person.getFirstName();
+        this.lName = person.getLastName();
+        this.email = person.getEmail();
+        
+        if(person.getAddress() != null){
+        this.address = new AddressDTO(person.getAddress());
+        }
+        
+        if(person.getHobbies() != null){
+        for (Hobby hobby : person.getHobbies()) {
+        this.hobbies.add(new HobbyDTO(hobby));
+        }
+        }
     }
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getHeight() {
-        return height;
+    public String getfName() {
+        return fName;
     }
 
-    public void setHeight(String height) {
-        this.height = height;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public String getGender() {
-        return gender;
+    public String getlName() {
+        return lName;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setlName(String lName) {
+        this.lName = lName;
     }
 
-    @Override
-    public String toString() {
-        return "PersonDTO{" + "name=" + name + ", height=" + height + ", gender=" + gender + '}';
+    public String getEmail() {
+        return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public AddressDTO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressDTO address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public List<HobbyDTO> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<HobbyDTO> hobbies) {
+        this.hobbies = hobbies;
+    }
+    
     
     
 }
