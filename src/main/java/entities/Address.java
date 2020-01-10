@@ -28,7 +28,6 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    @Column(name = "address_id", length = 25)
     private Long id;
     @NotNull
     private String street;

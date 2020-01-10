@@ -33,6 +33,7 @@ public class PersonDTO {
         this.fName = person.getFirstName();
         this.lName = person.getLastName();
         this.email = person.getEmail();
+        this.phone = person.getPhone();
         
         if(person.getAddress() != null){
         this.address = new AddressDTO(person.getAddress());
@@ -43,6 +44,7 @@ public class PersonDTO {
         this.hobbies.add(new HobbyDTO(hobby));
         }
         }
+        
     }
 
     public Long getId() {
