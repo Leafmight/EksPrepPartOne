@@ -45,6 +45,19 @@ public class PersonFacade {
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+    public List<PersonDTO> getAllPersons() {
+        EntityManager em = emf.createEntityManager();
+        List<PersonDTO> listDTO = new ArrayList<>();
+        try {
+            List<Person> list = em.createQuery("SELECT p FROM Person p").getResultList();
+            for (Person person : list) {
+                listDTO.add(new PersonDTO(person));
+            }
+            return listDTO;
+        } finally {
+            em.close();
+        }
+    }
 
     public PersonDTO addPerson(PersonDTO pDTO) {
         EntityManager em = emf.createEntityManager();

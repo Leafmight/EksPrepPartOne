@@ -69,6 +69,13 @@ public class PersonResource {
     return "Setup Complete!";
     }
     
+    @GET
+    @Path("allpersons")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PersonDTO> getAllPersons() {
+        return FACADE.getAllPersons();
+    }
+    
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
